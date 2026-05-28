@@ -1758,6 +1758,293 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 })();
 </script>
 
+<!-- ============ LAUNCH COUNTDOWN POPUP ============ -->
+<style>
+  /* Overlay */
+  #launch-overlay{
+    position:fixed;inset:0;z-index:9999;
+    background:rgba(0,0,0,.65);
+    backdrop-filter:blur(6px);
+    display:flex;align-items:center;justify-content:center;
+    padding:1.25rem;
+    opacity:0;pointer-events:none;
+    transition:opacity .45s ease;
+  }
+  #launch-overlay.show{opacity:1;pointer-events:auto}
+
+  /* Modal card */
+  #launch-modal{
+    position:relative;
+    width:100%;max-width:400px;
+    border-radius:28px;
+    background:linear-gradient(160deg,#0a3d1f 0%,#0F522A 45%,#1a7a3f 100%);
+    padding:2px;
+    box-shadow:0 32px 80px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.08);
+    transform:translateY(40px) scale(.95);
+    transition:transform .45s cubic-bezier(.22,1,.36,1);
+    overflow:hidden;
+  }
+  #launch-overlay.show #launch-modal{transform:translateY(0) scale(1)}
+
+  /* Sparkle bg */
+  .lm-bg{
+    position:absolute;inset:0;pointer-events:none;overflow:hidden;border-radius:28px;
+  }
+  .lm-orb{position:absolute;border-radius:50%;filter:blur(40px);opacity:.35}
+  .lm-orb1{width:220px;height:220px;background:#4ade80;top:-60px;right:-40px;animation:bokehdrift1 7s ease-in-out infinite}
+  .lm-orb2{width:160px;height:160px;background:#86efac;bottom:-40px;left:-30px;animation:bokehdrift2 9s ease-in-out infinite}
+
+  /* Inner */
+  .lm-inner{
+    position:relative;z-index:2;
+    background:linear-gradient(160deg,#0d4a22,#0F522A 60%,#16703a);
+    border-radius:26px;
+    padding:2rem 1.75rem 1.75rem;
+    text-align:center;
+  }
+
+  /* Badge */
+  .lm-badge{
+    display:inline-flex;align-items:center;gap:.5rem;
+    background:rgba(74,222,128,.15);border:1px solid rgba(74,222,128,.3);
+    border-radius:99px;padding:.35rem 1rem;
+    font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:#4ade80;margin-bottom:1.25rem;
+  }
+  .lm-badge-dot{width:6px;height:6px;border-radius:50%;background:#4ade80;animation:pulseGreen 2s ease-in-out infinite}
+
+  /* Title */
+  .lm-title{
+    font-size:1.5rem;font-weight:800;color:#fff;
+    line-height:1.2;letter-spacing:-.02em;margin-bottom:.5rem;
+  }
+  .lm-title span{
+    background:linear-gradient(135deg,#4ade80,#86efac);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  }
+  .lm-sub{font-size:.8rem;font-weight:300;color:rgba(255,255,255,.6);margin-bottom:1.75rem;line-height:1.6}
+
+  /* Date pill */
+  .lm-date{
+    display:inline-flex;align-items:center;gap:.5rem;
+    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
+    border-radius:12px;padding:.5rem 1.25rem;
+    font-size:.8rem;font-weight:700;color:#fff;
+    margin-bottom:1.75rem;letter-spacing:.02em;
+  }
+
+  /* Countdown */
+  .lm-countdown{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:.625rem;
+    margin-bottom:1.75rem;
+  }
+  .lm-unit{
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:16px;padding:.875rem .5rem .625rem;
+    position:relative;overflow:hidden;
+  }
+  .lm-unit::before{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(74,222,128,.06) 0%,transparent 60%);
+    pointer-events:none;
+  }
+  .lm-num{
+    font-size:1.9rem;font-weight:800;color:#fff;
+    line-height:1;letter-spacing:-.03em;display:block;
+    font-variant-numeric:tabular-nums;
+  }
+  .lm-label{
+    font-size:.55rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    color:rgba(255,255,255,.45);margin-top:.35rem;display:block;
+  }
+
+  /* Divider dots */
+  .lm-colon{
+    display:none; /* handled by grid gap */
+  }
+
+  /* Progress bar */
+  .lm-progress-wrap{
+    background:rgba(255,255,255,.1);border-radius:99px;height:4px;margin-bottom:1.5rem;overflow:hidden;
+  }
+  .lm-progress-bar{
+    height:100%;border-radius:99px;
+    background:linear-gradient(90deg,#4ade80,#86efac);
+    width:0%;transition:width 1s linear;
+  }
+
+  /* CTA button */
+  .lm-cta{
+    width:100%;padding:1rem;border-radius:16px;
+    background:linear-gradient(135deg,#4ade80,#22c55e);
+    color:#0a3d1f;font-size:.9rem;font-weight:800;
+    border:none;cursor:pointer;font-family:inherit;
+    letter-spacing:.01em;
+    box-shadow:0 8px 24px rgba(74,222,128,.35);
+    transition:all .2s ease;
+    display:flex;align-items:center;justify-content:center;gap:.5rem;
+  }
+  .lm-cta:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(74,222,128,.45)}
+  .lm-cta:active{transform:translateY(0)}
+
+  /* Close button */
+  .lm-close{
+    position:absolute;top:1rem;right:1rem;z-index:10;
+    width:32px;height:32px;border-radius:50%;
+    background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);
+    color:rgba(255,255,255,.6);font-size:1rem;
+    cursor:pointer;display:flex;align-items:center;justify-content:center;
+    transition:all .2s;font-family:inherit;
+  }
+  .lm-close:hover{background:rgba(255,255,255,.2);color:#fff}
+
+  /* Floating stars */
+  .lm-star{position:absolute;pointer-events:none;font-size:1.1rem;animation:lmStarFloat 3s ease-in-out infinite}
+  .lm-star:nth-child(1){top:18%;left:8%;animation-delay:0s}
+  .lm-star:nth-child(2){top:12%;right:14%;animation-delay:.8s}
+  .lm-star:nth-child(3){bottom:22%;left:12%;animation-delay:1.4s}
+  .lm-star:nth-child(4){bottom:30%;right:8%;animation-delay:.4s}
+  @keyframes lmStarFloat{0%,100%{transform:translateY(0) scale(1);opacity:.7}50%{transform:translateY(-8px) scale(1.15);opacity:1}}
+
+  /* Mobile tweaks */
+  @media(max-width:420px){
+    .lm-inner{padding:1.75rem 1.25rem 1.5rem}
+    .lm-title{font-size:1.3rem}
+    .lm-num{font-size:1.6rem}
+    .lm-countdown{gap:.5rem}
+  }
+</style>
+
+<div id="launch-overlay">
+  <div id="launch-modal">
+    <div class="lm-bg">
+      <div class="lm-orb lm-orb1"></div>
+      <div class="lm-orb lm-orb2"></div>
+    </div>
+    <button class="lm-close" id="lm-close-btn">✕</button>
+    <div class="lm-inner">
+      <!-- Floating stars -->
+      <span class="lm-star">✦</span>
+      <span class="lm-star">✦</span>
+      <span class="lm-star">✧</span>
+      <span class="lm-star">✦</span>
+
+      <!-- Badge -->
+      <div class="lm-badge">
+        <span class="lm-badge-dot"></span>
+        Coming Soon
+      </div>
+
+      <!-- Title -->
+      <div class="lm-title">YallaMart akan<br>segera <span>hadir! 🚀</span></div>
+      <p class="lm-sub">Platform marketplace pertama untuk mahasiswa<br>Indonesia, Malaysia & Thailand di Kairo.</p>
+
+      <!-- Date -->
+      <div class="lm-date">
+        📅 &nbsp;24 Juli 2025
+      </div>
+
+      <!-- Countdown -->
+      <div class="lm-countdown">
+        <div class="lm-unit">
+          <span class="lm-num" id="cd-days">00</span>
+          <span class="lm-label">Hari</span>
+        </div>
+        <div class="lm-unit">
+          <span class="lm-num" id="cd-hours">00</span>
+          <span class="lm-label">Jam</span>
+        </div>
+        <div class="lm-unit">
+          <span class="lm-num" id="cd-mins">00</span>
+          <span class="lm-label">Menit</span>
+        </div>
+        <div class="lm-unit">
+          <span class="lm-num" id="cd-secs">00</span>
+          <span class="lm-label">Detik</span>
+        </div>
+      </div>
+
+      <!-- Progress -->
+      <div class="lm-progress-wrap">
+        <div class="lm-progress-bar" id="lm-progress"></div>
+      </div>
+
+      <!-- CTA -->
+      <button class="lm-cta" onclick="document.getElementById('launch-overlay').classList.remove('show')">
+        🛍️ Saya Siap! Ingatkan Saya
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  // ── Countdown target: 24 Juli 2025 00:00:00 WIB (UTC+3 Cairo) ──
+  const TARGET = new Date('2025-07-24T00:00:00+03:00').getTime();
+  // Launch date dari perspektif user: kita hitung dari tanggal tertentu sebagai "start"
+  // Pakai 1 Januari 2025 sebagai referensi awal untuk progress bar
+  const START   = new Date('2025-01-01T00:00:00+03:00').getTime();
+
+  function pad(n){ return String(n).padStart(2,'0') }
+
+  function tick(){
+    const now  = Date.now();
+    const diff = TARGET - now;
+
+    if(diff <= 0){
+      // Sudah launch
+      document.getElementById('cd-days').textContent  = '00';
+      document.getElementById('cd-hours').textContent = '00';
+      document.getElementById('cd-mins').textContent  = '00';
+      document.getElementById('cd-secs').textContent  = '00';
+      document.getElementById('lm-progress').style.width = '100%';
+      return;
+    }
+
+    const days  = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const mins  = Math.floor((diff % 3600000)  / 60000);
+    const secs  = Math.floor((diff % 60000)    / 1000);
+
+    document.getElementById('cd-days').textContent  = pad(days);
+    document.getElementById('cd-hours').textContent = pad(hours);
+    document.getElementById('cd-mins').textContent  = pad(mins);
+    document.getElementById('cd-secs').textContent  = pad(secs);
+
+    // Progress bar: % waktu yang sudah berlalu dari START ke TARGET
+    const total   = TARGET - START;
+    const elapsed = now - START;
+    const pct     = Math.min(100, Math.max(0, (elapsed / total) * 100));
+    document.getElementById('lm-progress').style.width = pct + '%';
+  }
+
+  tick();
+  setInterval(tick, 1000);
+
+  // ── Tampil setelah user scroll 30% halaman ──
+  let shown = false;
+  function checkScroll(){
+    if(shown) return;
+    const scrolled = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    if(scrolled >= 0.30){
+      shown = true;
+      document.getElementById('launch-overlay').classList.add('show');
+      window.removeEventListener('scroll', checkScroll);
+    }
+  }
+  window.addEventListener('scroll', checkScroll, { passive:true });
+
+  // ── Close ──
+  document.getElementById('lm-close-btn').addEventListener('click', function(){
+    document.getElementById('launch-overlay').classList.remove('show');
+  });
+  document.getElementById('launch-overlay').addEventListener('click', function(e){
+    if(e.target === this) this.classList.remove('show');
+  });
+})();
+</script>
+
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
