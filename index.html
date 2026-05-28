@@ -331,7 +331,7 @@
     filter:blur(8px);pointer-events:none;z-index:-1;
     border-radius:50%;
   }
-  .phone-screen{width:100%;height:100%;border-radius:38px;overflow:hidden;background:#f8f8f8;display:flex;flex-direction:column}
+  .phone-screen{width:100%;height:100%;border-radius:38px;overflow:hidden;background:#f8f8f8;display:flex;flex-direction:column;position:relative}
   .phone-status{height:22px;background:var(--g);display:flex;align-items:center;justify-content:space-between;padding:0 18px;position:relative;flex-shrink:0}
   .phone-status-time,.phone-status-bat{font-size:9px;font-weight:700;color:#fff;z-index:2}
   .phone-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);background:#111;border-radius:0 0 14px 14px;width:88px;height:18px}
@@ -340,7 +340,7 @@
   .phone-appbar-title{color:#fff;font-size:10.5px;font-weight:700;flex:1}
   .phone-live-dot{width:6px;height:6px;border-radius:50%;background:#4ade80;animation:pulseGreen 2s ease-in-out infinite}
   .phone-live-text{font-size:8px;color:#a7f3d0;font-weight:500}
-  .phone-content{flex:1;overflow:hidden;position:relative;transition:opacity .4s,transform .4s}
+  .phone-content{flex:1;overflow:hidden;position:relative;transition:opacity .4s,transform .4s;min-height:0;max-height:100%}
 
   /* Screen 1 - Posting */
   .s1-topbar{display:flex;align-items:center;justify-content:space-between;padding:.5rem .875rem;border-bottom:1.5px solid #f0f0f0;background:#fff}
@@ -656,38 +656,42 @@
       width:100%;
       justify-content:center;
       align-items:center;
-      padding:1rem 1rem 2.5rem;
-      /* Reset perspective agar tidak overflow di mobile */
+      padding:0 1rem 1.5rem;
       perspective:none;
-      overflow:visible;
+      overflow:hidden;
       position:relative;
     }
     /* Sembunyikan float-card dan float-stat yang melayang — terlalu ramai di mobile */
     .hero-right .float-card,
     .hero-right .float-stat{ display:none }
-    /* Scale down phone mockup agar muat di layar mobile */
-    .phone-wrap{
-      transform:scale(0.72);
-      transform-origin:top center;
-      /* Kompensasi ruang vertikal akibat scaling */
-      margin-bottom:-5.5rem;
-    }
-    /* Pastikan konten di dalam phone tidak overflow */
-    .phone-frame{
-      max-width:248px;
-      overflow:hidden;
-    }
-    .phone-screen{
-      overflow:hidden;
-    }
-    .phone-content{
-      overflow:hidden !important;
-    }
     /* Sembunyikan elemen depth/float yang bisa overflow */
     .hero-right .depth-close,
     .hero-right .depth-mid,
-    .hero-right .depth-far{
-      display:none;
+    .hero-right .depth-far{ display:none }
+    /* Kecilkan phone-frame langsung — lebih bersih dari scale() */
+    .phone-frame{
+      width:200px !important;
+      height:408px !important;
+      border-radius:38px !important;
+      overflow:hidden;
+    }
+    .phone-frame::before{ border-radius:38px 38px 0 0 !important }
+    .phone-screen{
+      border-radius:30px !important;
+      overflow:hidden !important;
+    }
+    .phone-content{
+      overflow:hidden !important;
+      min-height:0 !important;
+    }
+    /* Reset phone-wrap di mobile agar tidak overflow */
+    .phone-wrap{
+      animation:phoneFloat 5.5s ease-in-out infinite;
+      transform:none !important;
+      margin-bottom:0;
+      filter:
+        drop-shadow(0 32px 40px rgba(15,82,42,.2))
+        drop-shadow(0 12px 20px rgba(0,0,0,.12));
     }
 
     /* --- Misc section mobile tweaks --- */
