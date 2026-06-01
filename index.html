@@ -580,6 +580,19 @@
     .ticker-wrap{display:none}
     .hero-inner{grid-template-columns:1fr;text-align:center;padding:5rem 2rem}
     .hero-right{display:none}
+  }
+  /* Desktop: pastikan hero tetap 2 kolom */
+  @media(min-width:1025px){
+    .hero-inner{display:grid !important;grid-template-columns:1fr 1fr !important;flex-direction:unset !important;text-align:left !important}
+    .hero-right{display:flex !important;width:auto !important}
+    .hero-right .float-card,.hero-right .float-stat{display:flex !important}
+    .hero-right .depth-close,.hero-right .depth-mid,.hero-right .depth-far{display:flex !important}
+    .phone-frame{width:248px !important;height:506px !important;border-radius:46px !important;clip-path:inset(0 round 46px) !important}
+    .phone-screen{border-radius:38px !important;clip-path:inset(0 round 38px) !important}
+    .hero-subtitle{border-left:2px solid rgba(15,82,42,.18) !important;padding-left:1.125rem !important;text-align:left !important}
+    .hero-badge,.hero-pills,.hero-ctas,.hero-proof{justify-content:flex-start !important}
+  }
+  @media(max-width:1024px){
     .hero-badge,.hero-pills,.hero-proof,.hero-ctas{justify-content:center}
     .community-grid{grid-template-columns:1fr 1fr}.features-grid{grid-template-columns:1fr 1fr}
     .extra-features{grid-template-columns:1fr 1fr}
