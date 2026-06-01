@@ -623,6 +623,7 @@
     .nav-links{ display:none }
     /* Sembunyikan tombol "Masuk" di mobile agar tidak penuh */
     .nav-login{ display:none }
+    .nav-cta{ display:none }
     /* Kecilkan tombol CTA di mobile */
     .nav-cta{ font-size:.75rem; padding:.5rem 1rem; border-radius:10px; gap:.35rem }
     .nav-cta svg{ width:13px; height:13px }
@@ -746,10 +747,30 @@
 
   /* Hamburger hidden di desktop */
   .nav-hamburger{ display:none }
-  .nav-drawer{ display:none }
+  /* Drawer: selalu hidden secara visual di desktop, tampil di mobile via opacity/transform */
+  @media(min-width:769px){
+    .nav-drawer{ display:none !important }
+  }
   @media(max-width:768px){
     .nav-hamburger{ display:flex }
-    .nav-drawer{ display:flex }
+    /* Drawer visible tapi tersembunyi via opacity — supaya .open bisa toggle */
+    .nav-drawer{ display:flex; flex-direction:column }
+  }
+
+  /* ============ TOAST SEGERA HADIR ============ */
+  #toast-segera-hadir{
+    position:fixed; bottom:2rem; left:50%; transform:translateX(-50%) translateY(80px);
+    background:#0F522A; color:#fff;
+    padding:.875rem 1.75rem; border-radius:99px;
+    font-size:.875rem; font-weight:700;
+    display:flex; align-items:center; gap:.625rem;
+    box-shadow:0 8px 32px rgba(15,82,42,.35);
+    z-index:9999; pointer-events:none;
+    opacity:0; transition:all .35s cubic-bezier(.34,1.56,.64,1);
+    white-space:nowrap;
+  }
+  #toast-segera-hadir.show{
+    opacity:1; transform:translateX(-50%) translateY(0);
   }
 </style>
 </head>
@@ -2268,5 +2289,43 @@ var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 })();
 </script>
 <!--End of Tawk.to Script-->
+
+<!-- TOAST SEGERA HADIR -->
+<div id="toast-segera-hadir">🚀 Segera Hadir! Pantau terus YallaMart</div>
+
+
+<script>
+(function(){
+  const toast = document.getElementById('toast-segera-hadir');
+  let toastTimer = null;
+
+  function showToast(){
+    if(toastTimer) clearTimeout(toastTimer);
+    toast.classList.add('show');
+    toastTimer = setTimeout(()=> toast.classList.remove('show'), 2800);
+  }
+
+  // Semua tombol yang perlu toast
+  const selectors = [
+    '.nav-cta',
+    '.nav-drawer-cta',
+    '.btn-primary',
+    '.btn-outline',
+    '.cta-btn-white',
+    '.cta-btn-outline',
+    '.newsletter-btn',
+  ];
+
+  selectors.forEach(sel => {
+    document.querySelectorAll(sel).forEach(el => {
+      el.addEventListener('click', function(e){
+        e.preventDefault();
+        showToast();
+      });
+    });
+  });
+})();
+</script>
+
 </body>
 </html>
