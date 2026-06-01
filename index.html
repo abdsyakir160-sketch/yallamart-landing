@@ -2248,6 +2248,78 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 })();
 </script>
 
+<!-- ===== TOAST SEGERA HADIR ===== -->
+<style>
+  #ym-toast{
+    position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(20px);
+    background:#0F522A;color:#fff;
+    padding:1rem 1.5rem 1rem 1.25rem;border-radius:16px;
+    font-family:'Plus Jakarta Sans',system-ui,sans-serif;
+    box-shadow:0 12px 40px rgba(15,82,42,.4);
+    display:flex;align-items:center;gap:.875rem;
+    opacity:0;pointer-events:none;
+    transition:opacity .35s ease,transform .35s ease;
+    z-index:9999;white-space:nowrap;
+  }
+  #ym-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  #ym-toast .toast-icon-wrap{
+    width:40px;height:40px;border-radius:12px;
+    background:rgba(255,255,255,.15);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.3rem;flex-shrink:0;
+  }
+  #ym-toast .toast-body{}
+  #ym-toast .toast-title{
+    font-size:.92rem;font-weight:800;letter-spacing:.01em;
+    line-height:1.2;margin-bottom:.2rem;
+  }
+  #ym-toast .toast-sub{
+    font-size:.72rem;font-weight:400;
+    color:rgba(255,255,255,.75);letter-spacing:.01em;
+  }
+  #ym-toast .toast-sub span{
+    color:#4ade80;font-weight:700;
+  }
+</style>
+<div id="ym-toast">
+  <div class="toast-icon-wrap">🚀</div>
+  <div class="toast-body">
+    <div class="toast-title">Segera Hadir!</div>
+    <div class="toast-sub">Pantau terus <span>YallaMart</span> 👀</div>
+  </div>
+</div>
+<script>
+(function(){
+  function showToast(){
+    var t = document.getElementById('ym-toast');
+    t.classList.add('show');
+    clearTimeout(t._timer);
+    t._timer = setTimeout(function(){ t.classList.remove('show'); }, 2800);
+  }
+
+  // Semua selector tombol yang perlu toast
+  var selectors = [
+    '.nav-cta',
+    '.nav-drawer-cta',
+    '.btn-primary',
+    '.btn-outline',
+    '.cta-btn-white',
+    '.cta-btn-outline',
+    '.newsletter-btn'
+  ];
+
+  document.addEventListener('DOMContentLoaded', function(){
+    selectors.forEach(function(sel){
+      document.querySelectorAll(sel).forEach(function(el){
+        el.addEventListener('click', function(e){
+          e.preventDefault();
+          showToast();
+        });
+      });
+    });
+  });
+})();
+</script>
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
