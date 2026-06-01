@@ -1288,44 +1288,6 @@
       </div>
 
     </div>
-    <div class="rest-header">
-      <div>
-        <span class="label">Restoran &amp; Mat'am</span>
-        <h2 class="h2">Mat'am Kairo yang <span class="gradient-text">Jadi Target Mitra</span></h2>
-      </div>
-      <p class="body" style="max-width:280px">Ini adalah contoh mat'am dari komunitas Indonesia, Malaysia, Thailand, dan Brunei di Kairo yang siap kami fasilitasi saat peluncuran.</p>
-    </div>
-    <div class="rest-grid">
-      <div class="rest-card">
-        <div class="rest-top"><div class="rest-emoji">🍛</div><div><div class="rest-name">Mat'am Al-Nusantara</div><div class="rest-cuisine">Masakan Indonesia</div><div class="rest-meta"><span style="font-size:.7rem;color:#6b7280">📍 Hay Asher</span><span class="rest-rating">★ 4.9</span><span class="rest-badge">Terpopuler</span></div></div></div>
-        <hr class="rest-divider"><div class="rest-bottom"><span style="font-size:.7rem;color:#6b7280">📦 320+ pesanan</span><span style="font-size:.7rem;color:#22c55e;font-weight:600">● Buka</span></div>
-      </div>
-      <div class="rest-card">
-        <div class="rest-top"><div class="rest-emoji">🍲</div><div><div class="rest-name">Warung Mak Siti</div><div class="rest-cuisine">Masakan Jawa</div><div class="rest-meta"><span style="font-size:.7rem;color:#6b7280">📍 Nasr City</span><span class="rest-rating">★ 4.8</span></div></div></div>
-        <hr class="rest-divider"><div class="rest-bottom"><span style="font-size:.7rem;color:#6b7280">📦 180+ pesanan</span><span style="font-size:.7rem;color:#22c55e;font-weight:600">● Buka</span></div>
-      </div>
-      <div class="rest-card">
-        <div class="rest-top"><div class="rest-emoji">🍜</div><div><div class="rest-name">KL Corner</div><div class="rest-cuisine">Masakan Malaysia</div><div class="rest-meta"><span style="font-size:.7rem;color:#6b7280">📍 Maadi</span><span class="rest-rating">★ 4.9</span></div></div></div>
-        <hr class="rest-divider"><div class="rest-bottom"><span style="font-size:.7rem;color:#6b7280">📦 210+ pesanan</span><span style="font-size:.7rem;color:#22c55e;font-weight:600">● Buka</span></div>
-      </div>
-      <div class="rest-card">
-        <div class="rest-top"><div class="rest-emoji">🌶️</div><div><div class="rest-name">Thai Express Cairo</div><div class="rest-cuisine">Masakan Thailand</div><div class="rest-meta"><span style="font-size:.7rem;color:#6b7280">📍 Heliopolis</span><span class="rest-rating">★ 4.7</span></div></div></div>
-        <hr class="rest-divider"><div class="rest-bottom"><span style="font-size:.7rem;color:#6b7280">📦 145+ pesanan</span><span style="font-size:.7rem;color:#22c55e;font-weight:600">● Buka</span></div>
-      </div>
-      <div class="rest-card">
-        <div class="rest-top"><div class="rest-emoji">🥣</div><div><div class="rest-name">Bakso &amp; Soto Mesir</div><div class="rest-cuisine">Street Food Indonesia</div><div class="rest-meta"><span style="font-size:.7rem;color:#6b7280">📍 Hay Asher</span><span class="rest-rating">★ 5.0</span><span class="rest-badge">⭐ Rating Tertinggi</span></div></div></div>
-        <hr class="rest-divider"><div class="rest-bottom"><span style="font-size:.7rem;color:#6b7280">📦 490+ pesanan</span><span style="font-size:.7rem;color:#22c55e;font-weight:600">● Buka</span></div>
-      </div>
-      <div class="rest-card">
-        <div class="rest-top"><div class="rest-emoji">🍚</div><div><div class="rest-name">Nasi Padang Cairo</div><div class="rest-cuisine">Masakan Padang</div><div class="rest-meta"><span style="font-size:.7rem;color:#6b7280">📍 Dokki</span><span class="rest-rating">★ 4.8</span></div></div></div>
-        <hr class="rest-divider"><div class="rest-bottom"><span style="font-size:.7rem;color:#6b7280">📦 260+ pesanan</span><span style="font-size:.7rem;color:#22c55e;font-weight:600">● Buka</span></div>
-      </div>
-    </div>
-    <div style="text-align:center;margin-top:2.5rem">
-      <button class="btn-outline" style="color:#0F522A;border-color:#0F522A">
-        Lihat Semua Mat'am &nbsp;→
-      </button>
-    </div>
   </div>
 </section>
 
@@ -1434,9 +1396,7 @@
         </div>
         <p class="footer-desc">Marketplace pertama bagi mahasiswa Indonesia, Malaysia, Thailand, dan Brunei di kota Kairo, Mesir. Belanja dan berjualan dengan mudah, aman, dan terpercaya.</p>
         <div class="footer-contact">
-          <div class="footer-contact-item">📍 <span>Cairo, Egypt &bull; Hay Asher, Nasr City, Maadi</span></div>
-          <div class="footer-contact-item">✉️ <span>hello@yallamart.id</span></div>
-          <div class="footer-contact-item">📱 <span>+20 100 000 0000 (WhatsApp)</span></div>
+          <div class="footer-contact-item">📍 <span>Cairo, Darb El Ahmar, Samping Nadi Qoumi, Atas Angkringan Darrosah</span></div>
         </div>
         <div class="footer-socials">
           <a href="https://www.instagram.com/yallamartofficial?igsh=b2lwc3BrYnVwYmJo&utm_source=qr" target="_blank" rel="noopener noreferrer" class="footer-ig-card">
@@ -2023,6 +1983,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 </style>
 
 <div id="launch-overlay">
+  <canvas id="confetti-canvas" style="position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:999"></canvas>
   <div id="launch-modal">
     <button class="lm-close" id="lm-close-btn">✕</button>
     <div class="lm-inner">
@@ -2067,7 +2028,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
       </p>
 
       <!-- Date -->
-      <div class="lm-date">📅 &nbsp;Launching · 24 Juli 2026</div>
+      <div class="lm-date">📅 &nbsp;Launching · 24 Juni 2026</div>
 
       <!-- Countdown -->
       <div class="lm-countdown">
@@ -2091,25 +2052,30 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 
 <script>
 (function(){
-  const TARGET = new Date('2026-07-24T00:00:00+03:00').getTime();
+  // Hitung hari berdasarkan tanggal lokal (bukan jam), supaya akurat di semua timezone
+  const TARGET_DATE = new Date(2026, 5, 24); // bulan 5 = Juni (0-indexed)
   const START  = new Date('2026-01-01T00:00:00+03:00').getTime();
 
   function pad(n){ return String(n).padStart(2,'0') }
 
   function tick(){
-    const now  = Date.now();
-    const diff = TARGET - now;
-    if(diff <= 0){
+    const now = new Date();
+    const todayMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    // Hitung hari dari midnight hari ini ke TARGET (akurat, tidak terpengaruh jam)
+    const daysDiff = Math.round((TARGET_DATE.getTime() - todayMidnight.getTime()) / 86400000);
+    const totalDiff = TARGET_DATE.getTime() - now.getTime();
+    if(totalDiff <= 0){
       ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id => document.getElementById(id).textContent = '00');
       document.getElementById('lm-progress').style.width = '100%';
       return;
     }
-    document.getElementById('cd-days').textContent  = pad(Math.floor(diff / 86400000));
-    document.getElementById('cd-hours').textContent = pad(Math.floor((diff % 86400000) / 3600000));
-    document.getElementById('cd-mins').textContent  = pad(Math.floor((diff % 3600000) / 60000));
-    document.getElementById('cd-secs').textContent  = pad(Math.floor((diff % 60000) / 1000));
+    // Hari pakai hitungan tanggal, jam/menit/detik pakai sisa ms real
+    document.getElementById('cd-days').textContent  = pad(daysDiff);
+    document.getElementById('cd-hours').textContent = pad(Math.floor((totalDiff % 86400000) / 3600000));
+    document.getElementById('cd-mins').textContent  = pad(Math.floor((totalDiff % 3600000) / 60000));
+    document.getElementById('cd-secs').textContent  = pad(Math.floor((totalDiff % 60000) / 1000));
 
-    const pct = Math.min(100, Math.max(0, ((Date.now() - START) / (TARGET - START)) * 100));
+    const pct = Math.min(100, Math.max(0, ((Date.now() - START) / (TARGET_DATE.getTime() - START)) * 100));
     document.getElementById('lm-progress').style.width = pct + '%';
   }
 
@@ -2137,6 +2103,148 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   document.getElementById('launch-overlay').addEventListener('click', function(e){
     if(e.target === this) this.classList.remove('show');
   });
+})();
+</script>
+
+<script>
+// ============ CONFETTI ============
+(function(){
+  const canvas = document.getElementById('confetti-canvas');
+  const ctx = canvas.getContext('2d');
+  let pieces = [];
+  let animId = null;
+  let running = false;
+
+  const COLORS = [
+    '#ff6b6b','#ffd93d','#6bcb77','#4d96ff','#ff922b',
+    '#f06595','#74c0fc','#a9e34b','#ff8787','#ffe066',
+    '#69db7c','#4dabf7','#fff','#f8f0fc'
+  ];
+  const SHAPES = ['rect','circle','ribbon'];
+
+  function resize(){
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function randomBetween(a,b){ return a + Math.random()*(b-a); }
+
+  function createPiece(fromSide){
+    const shape = SHAPES[Math.floor(Math.random()*SHAPES.length)];
+    const color = COLORS[Math.floor(Math.random()*COLORS.length)];
+    let x, vx;
+    if(fromSide === 'left'){
+      x  = randomBetween(-30, canvas.width*0.25);
+      vx = randomBetween(1, 4);
+    } else if(fromSide === 'right'){
+      x  = randomBetween(canvas.width*0.75, canvas.width+30);
+      vx = randomBetween(-4, -1);
+    } else {
+      x  = randomBetween(0, canvas.width);
+      vx = randomBetween(-2, 2);
+    }
+    return {
+      x, y: randomBetween(-60, -10),
+      vx, vy: randomBetween(0.8, 2.2),
+      vr: randomBetween(-1.5, 1.5),
+      rot: randomBetween(0, 360),
+      w: randomBetween(6, 14),
+      h: randomBetween(4, 9),
+      color, shape,
+      opacity: 1,
+      gravity: randomBetween(0.02, 0.055),
+      wobble: randomBetween(0, Math.PI*2),
+      wobbleSpeed: randomBetween(0.02, 0.055)
+    };
+  }
+
+  function burst(){
+    resize();
+    pieces = [];
+    // Left side burst
+    for(let i=0;i<60;i++) pieces.push(createPiece('left'));
+    // Right side burst
+    for(let i=0;i<60;i++) pieces.push(createPiece('right'));
+    // Top center rain
+    for(let i=0;i<50;i++) pieces.push(createPiece('top'));
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    pieces.forEach(p=>{
+      ctx.save();
+      ctx.globalAlpha = Math.max(0, p.opacity);
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rot * Math.PI/180);
+      ctx.fillStyle = p.color;
+      if(p.shape==='rect'){
+        ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+      } else if(p.shape==='circle'){
+        ctx.beginPath();
+        ctx.ellipse(0,0,p.w/2,p.h/2,0,0,Math.PI*2);
+        ctx.fill();
+      } else {
+        // ribbon
+        ctx.beginPath();
+        ctx.moveTo(-p.w/2, 0);
+        ctx.quadraticCurveTo(0, -p.h, p.w/2, 0);
+        ctx.quadraticCurveTo(0, p.h, -p.w/2, 0);
+        ctx.fill();
+      }
+      ctx.restore();
+    });
+  }
+
+  function update(){
+    pieces.forEach(p=>{
+      p.vy += p.gravity;
+      p.x  += p.vx + Math.sin(p.wobble)*1.2;
+      p.y  += p.vy;
+      p.rot += p.vr;
+      p.wobble += p.wobbleSpeed;
+      if(p.y > canvas.height * 0.75) p.opacity -= 0.007;
+    });
+    pieces = pieces.filter(p => p.opacity > 0);
+  }
+
+  function loop(){
+    update();
+    draw();
+    if(pieces.length > 0){
+      animId = requestAnimationFrame(loop);
+    } else {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      running = false;
+    }
+  }
+
+  function startConfetti(){
+    if(animId) cancelAnimationFrame(animId);
+    burst();
+    running = true;
+    loop();
+    // second wave setelah 800ms
+    setTimeout(()=>{
+      for(let i=0;i<40;i++) pieces.push(createPiece('left'));
+      for(let i=0;i<40;i++) pieces.push(createPiece('right'));
+    }, 800);
+  }
+
+  // Trigger konfeti saat overlay muncul
+  const overlay = document.getElementById('launch-overlay');
+  const observer = new MutationObserver(function(mutations){
+    mutations.forEach(function(m){
+      if(m.target.classList.contains('show')){
+        startConfetti();
+      } else {
+        if(animId) cancelAnimationFrame(animId);
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        pieces = [];
+      }
+    });
+  });
+  observer.observe(overlay, {attributes:true, attributeFilter:['class']});
+  window.addEventListener('resize', resize);
 })();
 </script>
 
