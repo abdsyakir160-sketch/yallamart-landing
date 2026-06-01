@@ -1704,17 +1704,22 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   if (!btn || !drawer) return;
 
   let isOpen = false;
+  let justToggled = false;
 
   function toggleMenu(){
     isOpen = !isOpen;
     drawer.classList.toggle('open', isOpen);
-    // Ganti icon hamburger ↔ X
     btn.innerHTML = isOpen
       ? `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0F522A" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`
       : `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0F522A" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>`;
   }
 
-  btn.addEventListener('click', toggleMenu);
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    justToggled = true;
+    toggleMenu();
+    setTimeout(function(){ justToggled = false; }, 300);
+  });
 
   // Tutup drawer saat link diklik
   drawer.querySelectorAll('a').forEach(a => {
@@ -1725,6 +1730,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 
   // Tutup drawer saat klik di luar
   document.addEventListener('click', e => {
+    if(justToggled) return;
     if (isOpen && !btn.contains(e.target) && !drawer.contains(e.target)) toggleMenu();
   });
 
