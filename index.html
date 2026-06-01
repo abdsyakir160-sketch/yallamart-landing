@@ -616,7 +616,7 @@
   @media(max-width:768px){
 
     /* --- NAVBAR mobile --- */
-    .nav{ top:0; padding:0 1rem; height:56px }
+    .nav{ top:0; padding:0 1.25rem 0 0.5rem; height:56px }
     .nav-brand-name{ font-size:1rem }
     .nav-brand-sub{ font-size:.48rem; letter-spacing:.08em }
     /* Sembunyikan nav-links teks desktop di mobile */
@@ -662,7 +662,9 @@
     .nav-drawer-cta{
       display:flex; align-items:center; justify-content:center; gap:.5rem;
       padding:.875rem; border-radius:14px; background:var(--g);
-      color:#fff; font-size:.875rem; font-weight:700; margin-top:.25rem;
+      color:#fff !important; font-size:.875rem; font-weight:700; margin-top:.25rem;
+    }
+    .nav-drawer-cta svg{ stroke:#fff !important; fill:none !important }
     }
 
     /* Foto banner di mobile — tampil penuh sesuai proporsi */
@@ -2132,41 +2134,46 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   function createPiece(fromSide){
     const shape = SHAPES[Math.floor(Math.random()*SHAPES.length)];
     const color = COLORS[Math.floor(Math.random()*COLORS.length)];
+    const isMobile = canvas.width < 600;
+    // Ukuran confetti lebih kecil di HP
+    const w = isMobile ? randomBetween(4,9) : randomBetween(6,14);
+    const h = isMobile ? randomBetween(3,7) : randomBetween(4,9);
     let x, vx;
     if(fromSide === 'left'){
-      x  = randomBetween(-30, canvas.width*0.25);
-      vx = randomBetween(1, 4);
+      // Di HP, semburan dari kiri lebih ke tengah
+      x  = randomBetween(-20, canvas.width * (isMobile ? 0.4 : 0.25));
+      vx = randomBetween(isMobile ? 0.5 : 1, isMobile ? 2 : 4);
     } else if(fromSide === 'right'){
-      x  = randomBetween(canvas.width*0.75, canvas.width+30);
-      vx = randomBetween(-4, -1);
+      x  = randomBetween(canvas.width * (isMobile ? 0.6 : 0.75), canvas.width+20);
+      vx = randomBetween(isMobile ? -2 : -4, isMobile ? -0.5 : -1);
     } else {
       x  = randomBetween(0, canvas.width);
-      vx = randomBetween(-2, 2);
+      vx = randomBetween(-1.5, 1.5);
     }
     return {
-      x, y: randomBetween(-60, -10),
-      vx, vy: randomBetween(0.8, 2.2),
-      vr: randomBetween(-1.5, 1.5),
+      x, y: randomBetween(-80, -10),
+      vx, vy: randomBetween(0.6, 1.8),
+      vr: randomBetween(-1.2, 1.2),
       rot: randomBetween(0, 360),
-      w: randomBetween(6, 14),
-      h: randomBetween(4, 9),
+      w, h,
       color, shape,
       opacity: 1,
-      gravity: randomBetween(0.02, 0.055),
+      gravity: randomBetween(0.015, 0.045),
       wobble: randomBetween(0, Math.PI*2),
-      wobbleSpeed: randomBetween(0.02, 0.055)
+      wobbleSpeed: randomBetween(0.015, 0.045)
     };
   }
 
   function burst(){
     resize();
     pieces = [];
-    // Left side burst
-    for(let i=0;i<60;i++) pieces.push(createPiece('left'));
-    // Right side burst
-    for(let i=0;i<60;i++) pieces.push(createPiece('right'));
-    // Top center rain
-    for(let i=0;i<50;i++) pieces.push(createPiece('top'));
+    const isMobile = canvas.width < 600;
+    // Kurangi jumlah piece di HP supaya tidak berat
+    const count = isMobile ? 30 : 60;
+    const topCount = isMobile ? 25 : 50;
+    for(let i=0;i<count;i++) pieces.push(createPiece('left'));
+    for(let i=0;i<count;i++) pieces.push(createPiece('right'));
+    for(let i=0;i<topCount;i++) pieces.push(createPiece('top'));
   }
 
   function draw(){
