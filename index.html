@@ -524,6 +524,28 @@
   .footer-socials{display:flex;gap:.5rem;margin-top:1.25rem}
   .footer-social-btn{width:36px;height:36px;border-radius:10px;border:1px solid #1f2937;background:none;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .25s;font-size:.9rem}
   .footer-social-btn:hover{border-color:rgba(74,222,128,.5);background:rgba(74,222,128,.08);transform:translateY(-2px)}
+
+  /* Instagram card */
+  .footer-ig-card{
+    display:inline-flex;align-items:center;gap:.875rem;
+    padding:.75rem 1.125rem;
+    border-radius:14px;
+    border:1px solid rgba(255,255,255,.1);
+    background:rgba(255,255,255,.05);
+    text-decoration:none;
+    transition:all .25s ease;
+    max-width:320px;
+  }
+  .footer-ig-card:hover{
+    border-color:rgba(220,39,67,.4);
+    background:rgba(220,39,67,.08);
+    transform:translateY(-2px);
+    box-shadow:0 8px 24px rgba(220,39,67,.15);
+  }
+  .footer-ig-icon{width:42px;height:42px;border-radius:10px;flex-shrink:0}
+  .footer-ig-info{display:flex;flex-direction:column;gap:.2rem}
+  .footer-ig-handle{font-size:.82rem;font-weight:700;color:#fff;letter-spacing:-.01em}
+  .footer-ig-cta{font-size:.7rem;font-weight:300;color:#9ca3af;line-height:1.4}
   .footer-section-title{font-size:.875rem;font-weight:700;color:#e5e7eb;margin-bottom:1.375rem}
   .footer-links{list-style:none;display:flex;flex-direction:column;gap:.875rem}
   .footer-links a{font-size:.82rem;font-weight:300;color:#6b7280;transition:color .2s;display:inline-flex;align-items:center;gap:.375rem}
@@ -538,6 +560,14 @@
   .footer-copy{font-size:.75rem;font-weight:300;color:#4b5563}
   .footer-countries{display:flex;gap:1.75rem}
   .footer-countries span{font-size:.75rem;font-weight:300;color:#4b5563;display:flex;align-items:center;gap:.375rem}
+
+  /* ============ TOP BANNER ============ */
+  .top-banner-img{
+    width:100%;
+    height:auto;   /* tampil penuh sesuai proporsi asli gambar */
+    display:block;
+    object-fit:unset;
+  }
 
   /* ============ BACK TO TOP ============ */
   .back-to-top{position:fixed;bottom:2rem;right:2rem;width:44px;height:44px;border-radius:50%;background:var(--g);color:#fff;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;opacity:0;transform:translateY(16px);pointer-events:none;z-index:200;box-shadow:0 6px 20px rgba(15,82,42,.3)}
@@ -635,8 +665,8 @@
       color:#fff; font-size:.875rem; font-weight:700; margin-top:.25rem;
     }
 
-    /* Foto banner di mobile — batasi tinggi agar tidak terlalu besar */
-    .top-banner-img{ max-height:220px; object-fit:cover; object-position:center }
+    /* Foto banner di mobile — tampil penuh sesuai proporsi */
+    .top-banner-img{ height:auto; max-height:unset; }
 
     /* --- HERO mobile: kolom vertikal, teks dulu lalu mockup --- */
     .hero{ padding-top:2rem; min-height:auto; align-items:flex-start; overflow:visible }
@@ -725,7 +755,7 @@
 
 <!-- TOP BANNER IMAGE -->
 <div style="width:100%;line-height:0;overflow:hidden;">
-  <img src="https://res.cloudinary.com/dsy4hjc7a/image/upload/v1779491705/file_00000000785c724688d167c73b7c743a_hmagby.png" alt="YallaMart Banner" class="top-banner-img" style="width:100%;display:block;object-fit:cover;" />
+  <img src="https://res.cloudinary.com/dsy4hjc7a/image/upload/v1780273177/file_00000000e59871f4a895784ab8092c21_gxgkey.png" alt="YallaMart Banner" class="top-banner-img" style="width:100%;display:block;object-fit:cover;" />
 </div>
 
 <!-- ANNOUNCEMENT TICKER -->
@@ -887,11 +917,7 @@
         <div><div class="float-card-title">Live Chat</div><div class="float-card-sub">Real-time</div></div>
       </div>
       <!-- CLOSE depth: stat card prominent -->
-      <div class="float-stat depth-close" style="top:4.5rem;right:-1.5rem">
-        <div style="font-size:.68rem;color:#9ca3af;font-weight:500">Pengguna Aktif</div>
-        <div style="font-size:1.6rem;font-weight:800;color:#0F522A;letter-spacing:-.02em">2.4k+</div>
-        <div style="font-size:.68rem;color:#22c55e;display:flex;align-items:center;gap:3px;font-weight:600">▲ +38% bulan ini</div>
-      </div>
+
       <!-- MID depth: default -->
       <div class="float-card depth-mid" style="bottom:3.5rem;right:-1.5rem;animation-delay:.3s">
         <span style="font-size:1.1rem">🇮🇩🇲🇾🇹🇭🇧🇳</span>
@@ -1408,15 +1434,31 @@
         </div>
         <p class="footer-desc">Marketplace pertama bagi mahasiswa Indonesia, Malaysia, Thailand, dan Brunei di kota Kairo, Mesir. Belanja dan berjualan dengan mudah, aman, dan terpercaya.</p>
         <div class="footer-contact">
-          <div class="footer-contact-item">📍 <span>Cairo, Egypt &bull; Hay Asher, Nasr City, Maadi</span></div>
-          <div class="footer-contact-item">✉️ <span>hello@yallamart.id</span></div>
-          <div class="footer-contact-item">📱 <span>+20 100 000 0000 (WhatsApp)</span></div>
+          <div class="footer-contact-item">📍 <span>Cairo, Darb El Ahmar, Samping Nadi Qoumi, Atas Angkringan Darrosah</span></div>
         </div>
         <div class="footer-socials">
-          <button class="footer-social-btn" title="Instagram">📷</button>
-          <button class="footer-social-btn" title="Telegram">✈️</button>
-          <button class="footer-social-btn" title="YouTube">▶️</button>
-          <button class="footer-social-btn" title="TikTok">🎵</button>
+          <a href="https://www.instagram.com/yallamartofficial?igsh=b2lwc3BrYnVwYmJo&utm_source=qr" target="_blank" rel="noopener noreferrer" class="footer-ig-card">
+            <!-- Instagram logo SVG -->
+            <svg class="footer-ig-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+              <defs>
+                <linearGradient id="ig-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+                  <stop offset="0%" style="stop-color:#f09433"/>
+                  <stop offset="25%" style="stop-color:#e6683c"/>
+                  <stop offset="50%" style="stop-color:#dc2743"/>
+                  <stop offset="75%" style="stop-color:#cc2366"/>
+                  <stop offset="100%" style="stop-color:#bc1888"/>
+                </linearGradient>
+              </defs>
+              <rect width="24" height="24" rx="6" fill="url(#ig-grad)"/>
+              <circle cx="12" cy="12" r="4.5" stroke="white" stroke-width="1.8" fill="none"/>
+              <circle cx="17" cy="7" r="1.1" fill="white"/>
+              <rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="white" stroke-width="1.5" fill="none"/>
+            </svg>
+            <div class="footer-ig-info">
+              <span class="footer-ig-handle">@yallamartofficial</span>
+              <span class="footer-ig-cta">Follow sosial media kami supaya tidak ketinggalan info</span>
+            </div>
+          </a>
         </div>
       </div>
       <div>
@@ -2023,7 +2065,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
       </p>
 
       <!-- Date -->
-      <div class="lm-date">📅 &nbsp;Launching · 24 Juli 2026</div>
+      <div class="lm-date">📅 &nbsp;Launching · 24 Juni 2026</div>
 
       <!-- Countdown -->
       <div class="lm-countdown">
@@ -2047,25 +2089,30 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 
 <script>
 (function(){
-  const TARGET = new Date('2026-07-24T00:00:00+03:00').getTime();
+  // Hitung hari berdasarkan tanggal lokal (bukan jam), supaya akurat di semua timezone
+  const TARGET_DATE = new Date(2026, 5, 24); // bulan 5 = Juni (0-indexed)
   const START  = new Date('2026-01-01T00:00:00+03:00').getTime();
 
   function pad(n){ return String(n).padStart(2,'0') }
 
   function tick(){
-    const now  = Date.now();
-    const diff = TARGET - now;
-    if(diff <= 0){
+    const now = new Date();
+    const todayMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    // Hitung hari dari midnight hari ini ke TARGET (akurat, tidak terpengaruh jam)
+    const daysDiff = Math.round((TARGET_DATE.getTime() - todayMidnight.getTime()) / 86400000);
+    const totalDiff = TARGET_DATE.getTime() - now.getTime();
+    if(totalDiff <= 0){
       ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id => document.getElementById(id).textContent = '00');
       document.getElementById('lm-progress').style.width = '100%';
       return;
     }
-    document.getElementById('cd-days').textContent  = pad(Math.floor(diff / 86400000));
-    document.getElementById('cd-hours').textContent = pad(Math.floor((diff % 86400000) / 3600000));
-    document.getElementById('cd-mins').textContent  = pad(Math.floor((diff % 3600000) / 60000));
-    document.getElementById('cd-secs').textContent  = pad(Math.floor((diff % 60000) / 1000));
+    // Hari pakai hitungan tanggal, jam/menit/detik pakai sisa ms real
+    document.getElementById('cd-days').textContent  = pad(daysDiff);
+    document.getElementById('cd-hours').textContent = pad(Math.floor((totalDiff % 86400000) / 3600000));
+    document.getElementById('cd-mins').textContent  = pad(Math.floor((totalDiff % 3600000) / 60000));
+    document.getElementById('cd-secs').textContent  = pad(Math.floor((totalDiff % 60000) / 1000));
 
-    const pct = Math.min(100, Math.max(0, ((Date.now() - START) / (TARGET - START)) * 100));
+    const pct = Math.min(100, Math.max(0, ((Date.now() - START) / (TARGET_DATE.getTime() - START)) * 100));
     document.getElementById('lm-progress').style.width = pct + '%';
   }
 
