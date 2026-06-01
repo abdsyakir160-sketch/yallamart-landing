@@ -580,19 +580,6 @@
     .ticker-wrap{display:none}
     .hero-inner{grid-template-columns:1fr;text-align:center;padding:5rem 2rem}
     .hero-right{display:none}
-  }
-  /* Desktop: pastikan hero tetap 2 kolom */
-  @media(min-width:1025px){
-    .hero-inner{display:grid !important;grid-template-columns:1fr 1fr !important;flex-direction:unset !important;text-align:left !important}
-    .hero-right{display:flex !important;width:auto !important}
-    .hero-right .float-card,.hero-right .float-stat{display:flex !important}
-    .hero-right .depth-close,.hero-right .depth-mid,.hero-right .depth-far{display:flex !important}
-    .phone-frame{width:248px !important;height:506px !important;border-radius:46px !important;clip-path:inset(0 round 46px) !important}
-    .phone-screen{border-radius:38px !important;clip-path:inset(0 round 38px) !important}
-    .hero-subtitle{border-left:2px solid rgba(15,82,42,.18) !important;padding-left:1.125rem !important;text-align:left !important}
-    .hero-badge,.hero-pills,.hero-ctas,.hero-proof{justify-content:flex-start !important}
-  }
-  @media(max-width:1024px){
     .hero-badge,.hero-pills,.hero-proof,.hero-ctas{justify-content:center}
     .community-grid{grid-template-columns:1fr 1fr}.features-grid{grid-template-columns:1fr 1fr}
     .extra-features{grid-template-columns:1fr 1fr}
@@ -629,14 +616,13 @@
   @media(max-width:768px){
 
     /* --- NAVBAR mobile --- */
-    .nav{ top:0; padding:0 1.25rem 0 0.5rem; height:56px }
+    .nav{ top:0; padding:0 1rem; height:56px }
     .nav-brand-name{ font-size:1rem }
     .nav-brand-sub{ font-size:.48rem; letter-spacing:.08em }
     /* Sembunyikan nav-links teks desktop di mobile */
     .nav-links{ display:none }
     /* Sembunyikan tombol "Masuk" di mobile agar tidak penuh */
     .nav-login{ display:none }
-    .nav-cta{ display:none }
     /* Kecilkan tombol CTA di mobile */
     .nav-cta{ font-size:.75rem; padding:.5rem 1rem; border-radius:10px; gap:.35rem }
     .nav-cta svg{ width:13px; height:13px }
@@ -676,9 +662,7 @@
     .nav-drawer-cta{
       display:flex; align-items:center; justify-content:center; gap:.5rem;
       padding:.875rem; border-radius:14px; background:var(--g);
-      color:#fff !important; font-size:.875rem; font-weight:700; margin-top:.25rem;
-    }
-    .nav-drawer-cta svg{ stroke:#fff !important; fill:none !important }
+      color:#fff; font-size:.875rem; font-weight:700; margin-top:.25rem;
     }
 
     /* Foto banner di mobile — tampil penuh sesuai proporsi */
@@ -760,30 +744,10 @@
 
   /* Hamburger hidden di desktop */
   .nav-hamburger{ display:none }
-  /* Drawer: selalu hidden secara visual di desktop, tampil di mobile via opacity/transform */
-  @media(min-width:769px){
-    .nav-drawer{ display:none !important }
-  }
+  .nav-drawer{ display:none }
   @media(max-width:768px){
     .nav-hamburger{ display:flex }
-    /* Drawer visible tapi tersembunyi via opacity — supaya .open bisa toggle */
-    .nav-drawer{ display:flex; flex-direction:column }
-  }
-
-  /* ============ TOAST SEGERA HADIR ============ */
-  #toast-segera-hadir{
-    position:fixed; bottom:2rem; left:50%; transform:translateX(-50%) translateY(80px);
-    background:#0F522A; color:#fff;
-    padding:.875rem 1.75rem; border-radius:99px;
-    font-size:.875rem; font-weight:700;
-    display:flex; align-items:center; gap:.625rem;
-    box-shadow:0 8px 32px rgba(15,82,42,.35);
-    z-index:9999; pointer-events:none;
-    opacity:0; transition:all .35s cubic-bezier(.34,1.56,.64,1);
-    white-space:nowrap;
-  }
-  #toast-segera-hadir.show{
-    opacity:1; transform:translateX(-50%) translateY(0);
+    .nav-drawer{ display:flex }
   }
 </style>
 </head>
@@ -1324,6 +1288,44 @@
       </div>
 
     </div>
+    <div class="rest-header">
+      <div>
+        <span class="label">Restoran &amp; Mat'am</span>
+        <h2 class="h2">Mat'am Kairo yang <span class="gradient-text">Jadi Target Mitra</span></h2>
+      </div>
+      <p class="body" style="max-width:280px">Ini adalah contoh mat'am dari komunitas Indonesia, Malaysia, Thailand, dan Brunei di Kairo yang siap kami fasilitasi saat peluncuran.</p>
+    </div>
+    <div class="rest-grid">
+      <div class="rest-card">
+        <div class="rest-top"><div class="rest-emoji">🍛</div><div><div class="rest-name">Mat'am Al-Nusantara</div><div class="rest-cuisine">Masakan Indonesia</div><div class="rest-meta"><span style="font-size:.7rem;color:#6b7280">📍 Hay Asher</span><span class="rest-rating">★ 4.9</span><span class="rest-badge">Terpopuler</span></div></div></div>
+        <hr class="rest-divider"><div class="rest-bottom"><span style="font-size:.7rem;color:#6b7280">📦 320+ pesanan</span><span style="font-size:.7rem;color:#22c55e;font-weight:600">● Buka</span></div>
+      </div>
+      <div class="rest-card">
+        <div class="rest-top"><div class="rest-emoji">🍲</div><div><div class="rest-name">Warung Mak Siti</div><div class="rest-cuisine">Masakan Jawa</div><div class="rest-meta"><span style="font-size:.7rem;color:#6b7280">📍 Nasr City</span><span class="rest-rating">★ 4.8</span></div></div></div>
+        <hr class="rest-divider"><div class="rest-bottom"><span style="font-size:.7rem;color:#6b7280">📦 180+ pesanan</span><span style="font-size:.7rem;color:#22c55e;font-weight:600">● Buka</span></div>
+      </div>
+      <div class="rest-card">
+        <div class="rest-top"><div class="rest-emoji">🍜</div><div><div class="rest-name">KL Corner</div><div class="rest-cuisine">Masakan Malaysia</div><div class="rest-meta"><span style="font-size:.7rem;color:#6b7280">📍 Maadi</span><span class="rest-rating">★ 4.9</span></div></div></div>
+        <hr class="rest-divider"><div class="rest-bottom"><span style="font-size:.7rem;color:#6b7280">📦 210+ pesanan</span><span style="font-size:.7rem;color:#22c55e;font-weight:600">● Buka</span></div>
+      </div>
+      <div class="rest-card">
+        <div class="rest-top"><div class="rest-emoji">🌶️</div><div><div class="rest-name">Thai Express Cairo</div><div class="rest-cuisine">Masakan Thailand</div><div class="rest-meta"><span style="font-size:.7rem;color:#6b7280">📍 Heliopolis</span><span class="rest-rating">★ 4.7</span></div></div></div>
+        <hr class="rest-divider"><div class="rest-bottom"><span style="font-size:.7rem;color:#6b7280">📦 145+ pesanan</span><span style="font-size:.7rem;color:#22c55e;font-weight:600">● Buka</span></div>
+      </div>
+      <div class="rest-card">
+        <div class="rest-top"><div class="rest-emoji">🥣</div><div><div class="rest-name">Bakso &amp; Soto Mesir</div><div class="rest-cuisine">Street Food Indonesia</div><div class="rest-meta"><span style="font-size:.7rem;color:#6b7280">📍 Hay Asher</span><span class="rest-rating">★ 5.0</span><span class="rest-badge">⭐ Rating Tertinggi</span></div></div></div>
+        <hr class="rest-divider"><div class="rest-bottom"><span style="font-size:.7rem;color:#6b7280">📦 490+ pesanan</span><span style="font-size:.7rem;color:#22c55e;font-weight:600">● Buka</span></div>
+      </div>
+      <div class="rest-card">
+        <div class="rest-top"><div class="rest-emoji">🍚</div><div><div class="rest-name">Nasi Padang Cairo</div><div class="rest-cuisine">Masakan Padang</div><div class="rest-meta"><span style="font-size:.7rem;color:#6b7280">📍 Dokki</span><span class="rest-rating">★ 4.8</span></div></div></div>
+        <hr class="rest-divider"><div class="rest-bottom"><span style="font-size:.7rem;color:#6b7280">📦 260+ pesanan</span><span style="font-size:.7rem;color:#22c55e;font-weight:600">● Buka</span></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem">
+      <button class="btn-outline" style="color:#0F522A;border-color:#0F522A">
+        Lihat Semua Mat'am &nbsp;→
+      </button>
+    </div>
   </div>
 </section>
 
@@ -1432,7 +1434,9 @@
         </div>
         <p class="footer-desc">Marketplace pertama bagi mahasiswa Indonesia, Malaysia, Thailand, dan Brunei di kota Kairo, Mesir. Belanja dan berjualan dengan mudah, aman, dan terpercaya.</p>
         <div class="footer-contact">
-          <div class="footer-contact-item">📍 <span>Cairo, Darb El Ahmar, Samping Nadi Qoumi, Atas Angkringan Darrosah</span></div>
+          <div class="footer-contact-item">📍 <span>Cairo, Egypt &bull; Hay Asher, Nasr City, Maadi</span></div>
+          <div class="footer-contact-item">✉️ <span>hello@yallamart.id</span></div>
+          <div class="footer-contact-item">📱 <span>+20 100 000 0000 (WhatsApp)</span></div>
         </div>
         <div class="footer-socials">
           <a href="https://www.instagram.com/yallamartofficial?igsh=b2lwc3BrYnVwYmJo&utm_source=qr" target="_blank" rel="noopener noreferrer" class="footer-ig-card">
@@ -2019,7 +2023,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 </style>
 
 <div id="launch-overlay">
-  <canvas id="confetti-canvas" style="position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:999"></canvas>
   <div id="launch-modal">
     <button class="lm-close" id="lm-close-btn">✕</button>
     <div class="lm-inner">
@@ -2064,7 +2067,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
       </p>
 
       <!-- Date -->
-      <div class="lm-date">📅 &nbsp;Launching · 24 Juni 2026</div>
+      <div class="lm-date">📅 &nbsp;Launching · 24 Juli 2026</div>
 
       <!-- Countdown -->
       <div class="lm-countdown">
@@ -2088,30 +2091,25 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 
 <script>
 (function(){
-  // Hitung hari berdasarkan tanggal lokal (bukan jam), supaya akurat di semua timezone
-  const TARGET_DATE = new Date(2026, 5, 24); // bulan 5 = Juni (0-indexed)
+  const TARGET = new Date('2026-07-24T00:00:00+03:00').getTime();
   const START  = new Date('2026-01-01T00:00:00+03:00').getTime();
 
   function pad(n){ return String(n).padStart(2,'0') }
 
   function tick(){
-    const now = new Date();
-    const todayMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    // Hitung hari dari midnight hari ini ke TARGET (akurat, tidak terpengaruh jam)
-    const daysDiff = Math.round((TARGET_DATE.getTime() - todayMidnight.getTime()) / 86400000);
-    const totalDiff = TARGET_DATE.getTime() - now.getTime();
-    if(totalDiff <= 0){
+    const now  = Date.now();
+    const diff = TARGET - now;
+    if(diff <= 0){
       ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id => document.getElementById(id).textContent = '00');
       document.getElementById('lm-progress').style.width = '100%';
       return;
     }
-    // Hari pakai hitungan tanggal, jam/menit/detik pakai sisa ms real
-    document.getElementById('cd-days').textContent  = pad(daysDiff);
-    document.getElementById('cd-hours').textContent = pad(Math.floor((totalDiff % 86400000) / 3600000));
-    document.getElementById('cd-mins').textContent  = pad(Math.floor((totalDiff % 3600000) / 60000));
-    document.getElementById('cd-secs').textContent  = pad(Math.floor((totalDiff % 60000) / 1000));
+    document.getElementById('cd-days').textContent  = pad(Math.floor(diff / 86400000));
+    document.getElementById('cd-hours').textContent = pad(Math.floor((diff % 86400000) / 3600000));
+    document.getElementById('cd-mins').textContent  = pad(Math.floor((diff % 3600000) / 60000));
+    document.getElementById('cd-secs').textContent  = pad(Math.floor((diff % 60000) / 1000));
 
-    const pct = Math.min(100, Math.max(0, ((Date.now() - START) / (TARGET_DATE.getTime() - START)) * 100));
+    const pct = Math.min(100, Math.max(0, ((Date.now() - START) / (TARGET - START)) * 100));
     document.getElementById('lm-progress').style.width = pct + '%';
   }
 
@@ -2142,153 +2140,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 })();
 </script>
 
-<script>
-// ============ CONFETTI ============
-(function(){
-  const canvas = document.getElementById('confetti-canvas');
-  const ctx = canvas.getContext('2d');
-  let pieces = [];
-  let animId = null;
-  let running = false;
-
-  const COLORS = [
-    '#ff6b6b','#ffd93d','#6bcb77','#4d96ff','#ff922b',
-    '#f06595','#74c0fc','#a9e34b','#ff8787','#ffe066',
-    '#69db7c','#4dabf7','#fff','#f8f0fc'
-  ];
-  const SHAPES = ['rect','circle','ribbon'];
-
-  function resize(){
-    canvas.width  = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
-
-  function randomBetween(a,b){ return a + Math.random()*(b-a); }
-
-  function createPiece(fromSide){
-    const shape = SHAPES[Math.floor(Math.random()*SHAPES.length)];
-    const color = COLORS[Math.floor(Math.random()*COLORS.length)];
-    const isMobile = canvas.width < 600;
-    // Ukuran confetti lebih kecil di HP
-    const w = isMobile ? randomBetween(4,9) : randomBetween(6,14);
-    const h = isMobile ? randomBetween(3,7) : randomBetween(4,9);
-    let x, vx;
-    if(fromSide === 'left'){
-      // Di HP, semburan dari kiri lebih ke tengah
-      x  = randomBetween(-20, canvas.width * (isMobile ? 0.4 : 0.25));
-      vx = randomBetween(isMobile ? 0.5 : 1, isMobile ? 2 : 4);
-    } else if(fromSide === 'right'){
-      x  = randomBetween(canvas.width * (isMobile ? 0.6 : 0.75), canvas.width+20);
-      vx = randomBetween(isMobile ? -2 : -4, isMobile ? -0.5 : -1);
-    } else {
-      x  = randomBetween(0, canvas.width);
-      vx = randomBetween(-1.5, 1.5);
-    }
-    return {
-      x, y: randomBetween(-80, -10),
-      vx, vy: randomBetween(0.6, 1.8),
-      vr: randomBetween(-1.2, 1.2),
-      rot: randomBetween(0, 360),
-      w, h,
-      color, shape,
-      opacity: 1,
-      gravity: randomBetween(0.015, 0.045),
-      wobble: randomBetween(0, Math.PI*2),
-      wobbleSpeed: randomBetween(0.015, 0.045)
-    };
-  }
-
-  function burst(){
-    resize();
-    pieces = [];
-    const isMobile = canvas.width < 600;
-    // Kurangi jumlah piece di HP supaya tidak berat
-    const count = isMobile ? 30 : 60;
-    const topCount = isMobile ? 25 : 50;
-    for(let i=0;i<count;i++) pieces.push(createPiece('left'));
-    for(let i=0;i<count;i++) pieces.push(createPiece('right'));
-    for(let i=0;i<topCount;i++) pieces.push(createPiece('top'));
-  }
-
-  function draw(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    pieces.forEach(p=>{
-      ctx.save();
-      ctx.globalAlpha = Math.max(0, p.opacity);
-      ctx.translate(p.x, p.y);
-      ctx.rotate(p.rot * Math.PI/180);
-      ctx.fillStyle = p.color;
-      if(p.shape==='rect'){
-        ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
-      } else if(p.shape==='circle'){
-        ctx.beginPath();
-        ctx.ellipse(0,0,p.w/2,p.h/2,0,0,Math.PI*2);
-        ctx.fill();
-      } else {
-        // ribbon
-        ctx.beginPath();
-        ctx.moveTo(-p.w/2, 0);
-        ctx.quadraticCurveTo(0, -p.h, p.w/2, 0);
-        ctx.quadraticCurveTo(0, p.h, -p.w/2, 0);
-        ctx.fill();
-      }
-      ctx.restore();
-    });
-  }
-
-  function update(){
-    pieces.forEach(p=>{
-      p.vy += p.gravity;
-      p.x  += p.vx + Math.sin(p.wobble)*1.2;
-      p.y  += p.vy;
-      p.rot += p.vr;
-      p.wobble += p.wobbleSpeed;
-      if(p.y > canvas.height * 0.75) p.opacity -= 0.007;
-    });
-    pieces = pieces.filter(p => p.opacity > 0);
-  }
-
-  function loop(){
-    update();
-    draw();
-    if(pieces.length > 0){
-      animId = requestAnimationFrame(loop);
-    } else {
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      running = false;
-    }
-  }
-
-  function startConfetti(){
-    if(animId) cancelAnimationFrame(animId);
-    burst();
-    running = true;
-    loop();
-    // second wave setelah 800ms
-    setTimeout(()=>{
-      for(let i=0;i<40;i++) pieces.push(createPiece('left'));
-      for(let i=0;i<40;i++) pieces.push(createPiece('right'));
-    }, 800);
-  }
-
-  // Trigger konfeti saat overlay muncul
-  const overlay = document.getElementById('launch-overlay');
-  const observer = new MutationObserver(function(mutations){
-    mutations.forEach(function(m){
-      if(m.target.classList.contains('show')){
-        startConfetti();
-      } else {
-        if(animId) cancelAnimationFrame(animId);
-        ctx.clearRect(0,0,canvas.width,canvas.height);
-        pieces = [];
-      }
-    });
-  });
-  observer.observe(overlay, {attributes:true, attributeFilter:['class']});
-  window.addEventListener('resize', resize);
-})();
-</script>
-
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
@@ -2302,43 +2153,5 @@ var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 })();
 </script>
 <!--End of Tawk.to Script-->
-
-<!-- TOAST SEGERA HADIR -->
-<div id="toast-segera-hadir">🚀 Segera Hadir! Pantau terus YallaMart</div>
-
-
-<script>
-(function(){
-  const toast = document.getElementById('toast-segera-hadir');
-  let toastTimer = null;
-
-  function showToast(){
-    if(toastTimer) clearTimeout(toastTimer);
-    toast.classList.add('show');
-    toastTimer = setTimeout(()=> toast.classList.remove('show'), 2800);
-  }
-
-  // Semua tombol yang perlu toast
-  const selectors = [
-    '.nav-cta',
-    '.nav-drawer-cta',
-    '.btn-primary',
-    '.btn-outline',
-    '.cta-btn-white',
-    '.cta-btn-outline',
-    '.newsletter-btn',
-  ];
-
-  selectors.forEach(sel => {
-    document.querySelectorAll(sel).forEach(el => {
-      el.addEventListener('click', function(e){
-        e.preventDefault();
-        showToast();
-      });
-    });
-  });
-})();
-</script>
-
 </body>
 </html>
