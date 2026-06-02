@@ -1184,6 +1184,180 @@
   </div>
 </section>
 
+<!-- ROADMAP -->
+<section class="section" id="roadmap" style="background:#fff">
+  <div class="container">
+    <div style="text-align:center;max-width:600px;margin:0 auto 3.5rem">
+      <span class="label">🗺️ Roadmap</span>
+      <h2 class="h2" style="margin-bottom:.75rem">Perjalanan <span class="gradient-text">YallaMart</span></h2>
+      <p class="lead">Rencana besar kami untuk ekosistem mahasiswa Kairo.</p>
+    </div>
+
+    <!-- Timeline -->
+    <div style="position:relative;max-width:720px;margin:0 auto" id="rm-wrap">
+
+      <!-- Garis vertikal gradasi YallaMart -->
+      <div style="position:absolute;left:50%;top:0;bottom:0;width:3px;background:linear-gradient(180deg,#10b981,#4ade80,#bbf7d0,#e5e7eb);transform:translateX(-50%);border-radius:99px"></div>
+
+      <!-- Item 1: Launch -->
+      <div class="rm-item rm-left rm-animate" data-delay="0">
+        <div class="rm-dot rm-dot-done">
+          <div class="rm-ping"></div>
+        </div>
+        <div class="rm-card rm-card-grad1">
+          <div class="rm-tag" style="background:#dcfce7;color:#0F522A">🚀 Launching</div>
+          <div class="rm-date">24 Juli 2026</div>
+          <div class="rm-title">YallaMart Resmi Diluncurkan</div>
+          <div class="rm-desc">Marketplace pertama untuk mahasiswa Indonesia, Malaysia, Thailand & Brunei di Kairo.</div>
+        </div>
+      </div>
+
+      <!-- Item 2: YallaFood -->
+      <div class="rm-item rm-right rm-animate" data-delay="200">
+        <div class="rm-dot rm-dot-soon">
+          <div class="rm-ping rm-ping-yellow"></div>
+        </div>
+        <div class="rm-card rm-card-grad2">
+          <div class="rm-tag" style="background:#fef9c3;color:#a16207">🍔 Coming Soon</div>
+          <div class="rm-date">Oktober 2026</div>
+          <div class="rm-title">Launching YallaFood</div>
+          <div class="rm-desc">Fitur pesan makanan khusus dari mat'am langganan mahasiswa — langsung diantar ke pintu.</div>
+        </div>
+      </div>
+
+      <!-- Item 3: Playstore -->
+      <div class="rm-item rm-left rm-animate" data-delay="400">
+        <div class="rm-dot rm-dot-tbd"></div>
+        <div class="rm-card rm-card-tbd">
+          <div class="rm-tag" style="background:#f3f4f6;color:#6b7280">📱 Segera</div>
+          <div class="rm-date" style="color:#9ca3af;letter-spacing:.12em">· · · · · ·</div>
+          <div class="rm-title" style="color:#374151">Hadir di Play Store</div>
+          <div class="rm-desc">Tanggal belum ditentukan — pantau terus update kami!</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  /* === BASE LAYOUT === */
+  .rm-item{position:relative;display:flex;align-items:flex-start;margin-bottom:3rem;width:50%}
+  .rm-left{padding-right:2.5rem;justify-content:flex-end;text-align:right}
+  .rm-right{padding-left:2.5rem;margin-left:50%}
+
+  /* === SCROLL ANIMATION === */
+  .rm-animate{
+    opacity:0 !important;
+    transform:translateY(-80px) scale(0.92) !important;
+    transition:opacity .8s cubic-bezier(.34,1.56,.64,1), transform .8s cubic-bezier(.34,1.56,.64,1) !important;
+  }
+  .rm-animate.rm-visible{
+    opacity:1 !important;
+    transform:translateY(0) scale(1) !important;
+  }
+  .rm-dot{position:absolute;top:1.25rem;width:16px;height:16px;border-radius:50%;border:3px solid #fff;z-index:3}
+  .rm-left .rm-dot{right:-8px}
+  .rm-right .rm-dot{left:-8px}
+  .rm-dot-done{background:#0F522A;box-shadow:0 0 0 3px #0F522A,0 0 14px rgba(16,185,129,.5)}
+  .rm-dot-soon{background:#facc15;box-shadow:0 0 0 3px #facc15,0 0 14px rgba(250,204,21,.5)}
+  .rm-dot-tbd{background:#d1d5db;box-shadow:0 0 0 3px #d1d5db}
+
+  /* === PING GLOW EFFECT === */
+  .rm-ping{
+    position:absolute;inset:-6px;border-radius:50%;
+    background:rgba(16,185,129,.25);
+    animation:rmPingAnim 2s ease-in-out infinite;
+  }
+  .rm-ping-yellow{background:rgba(250,204,21,.25);animation:rmPingAnim 2.4s ease-in-out infinite .3s}
+  @keyframes rmPingAnim{
+    0%,100%{transform:scale(1);opacity:.6}
+    50%{transform:scale(1.8);opacity:0}
+  }
+
+  /* === CARD === */
+  .rm-card{
+    background:#fff;
+    border:1px solid #e5e7eb;
+    border-radius:18px;padding:1.25rem 1.5rem;
+    box-shadow:0 4px 20px rgba(0,0,0,.05);
+    transition:transform .3s ease,box-shadow .3s ease;
+    position:relative;overflow:hidden;
+  }
+  .rm-card:hover{transform:translateY(-5px);box-shadow:0 12px 36px rgba(0,0,0,.11)}
+  .rm-card-tbd{border-style:dashed;background:#fafafa}
+  .rm-card-tbd:hover{transform:translateY(-3px)}
+
+  /* Border gradasi tipis premium */
+  .rm-card-grad1::before{
+    content:'';position:absolute;inset:0;border-radius:18px;padding:1.5px;
+    background:linear-gradient(135deg,#10b981,#4ade80,transparent);
+    -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+    -webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;
+  }
+  .rm-card-grad2::before{
+    content:'';position:absolute;inset:0;border-radius:18px;padding:1.5px;
+    background:linear-gradient(135deg,#facc15,#fde68a,transparent);
+    -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+    -webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;
+  }
+
+  /* === SCROLL ANIMATION === */
+  .rm-animate{
+    opacity:0;
+    transform:translateY(-32px);
+    transition:opacity .65s cubic-bezier(.4,0,.2,1), transform .65s cubic-bezier(.4,0,.2,1);
+  }
+  .rm-animate.rm-visible{opacity:1;transform:translateY(0)}
+
+  /* === TAG, DATE, TITLE, DESC === */
+  .rm-tag{display:inline-flex;align-items:center;gap:.35rem;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .75rem;border-radius:99px;margin-bottom:.5rem}
+  .rm-date{font-size:.78rem;font-weight:700;color:#0F522A;margin-bottom:.3rem;letter-spacing:.02em}
+  .rm-title{font-size:.95rem;font-weight:800;color:#111827;margin-bottom:.35rem;line-height:1.3}
+  .rm-desc{font-size:.78rem;font-weight:300;color:#6b7280;line-height:1.6}
+
+  /* === MOBILE === */
+  @media(max-width:640px){
+    .rm-item{width:100%;padding-left:2.25rem !important;padding-right:0 !important;margin-left:0 !important;justify-content:flex-start !important;text-align:left !important}
+    .rm-left .rm-dot,.rm-right .rm-dot{left:-8px;right:auto}
+    #rm-wrap > div:first-child{left:0 !important;transform:none !important}
+  }
+</style>
+
+<script>
+(function(){
+  function initRoadmapAnim(){
+    var items = document.querySelectorAll('.rm-animate');
+    if(!items.length) return;
+    var triggered = false;
+
+    function animateItems(){
+      if(triggered) return;
+      triggered = true;
+      items.forEach(function(el){
+        var delay = parseInt(el.getAttribute('data-delay')) || 0;
+        setTimeout(function(){ el.classList.add('rm-visible'); }, delay);
+      });
+    }
+
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ animateItems(); obs.disconnect(); }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+    var sec = document.getElementById('roadmap');
+    if(sec) obs.observe(sec);
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', initRoadmapAnim);
+  } else {
+    initRoadmapAnim();
+  }
+})();
+</script>
+
 <!-- RESTAURANTS / STATS -->
 <section class="section section-alt">
   <div class="container">
@@ -2018,9 +2192,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 
       <!-- Badge -->
       <div class="lm-badge"><span class="lm-badge-dot"></span> Premium Marketplace · Coming Soon</div>
-
-      <!-- Eyebrow -->
-      <div class="lm-eyebrow">Khusus Mahasiswa Indonesia di Kairo</div>
 
       <!-- Title -->
       <div class="lm-title">
