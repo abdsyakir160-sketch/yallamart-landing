@@ -786,6 +786,8 @@
   @media(max-width:768px){
     .nav-hamburger{ display:flex }
     .nav-drawer{ display:flex }
+    .ticker-wrap{padding:.3rem 0}
+    .ticker-item{font-size:.62rem;padding:0 1.25rem}
   }
 </style>
 </head>
@@ -2554,14 +2556,15 @@ var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
   var cards = document.querySelectorAll('.community-card-anim');
   var observer = new IntersectionObserver(function(entries){
     entries.forEach(function(entry){
+      var el = entry.target;
       if(entry.isIntersecting){
-        var el = entry.target;
         var delay = el.getAttribute('data-delay') || 0;
         setTimeout(function(){
-          el.style.animationDelay = '0ms';
           el.classList.add('visible');
         }, parseInt(delay));
-        observer.unobserve(el);
+      } else {
+        // Reset saat keluar layar — animasi ulang saat scroll balik
+        el.classList.remove('visible');
       }
     });
   }, {threshold: 0.15});
